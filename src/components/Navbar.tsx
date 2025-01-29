@@ -82,7 +82,7 @@ const Navbar = () => {
               </Link>
               <button
                 onClick={() => {
-                  window.open('https://github.com/Garvit-Nag/Revibe', '_blank')
+                  window.open('https://github.com/Garvit-Nag/Revibe-Remastered', '_blank')
                   setIsOpen(false)
                 }}
                 className="w-full flex items-center justify-center gap-2 py-3 text-white border border-white hover:bg-white hover:text-black transition-all duration-300 rounded-xl"
