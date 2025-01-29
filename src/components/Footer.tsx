@@ -36,7 +36,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Music size={16} className="text-green-500" />
-                <span className="text-gray-400">Personalized Playlists</span>
+                <span className="text-gray-400">Live Previews</span>
               </div>
             </div>
           </div>
