@@ -4,41 +4,7 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { AudioLines } from "lucide-react";
-import { useEffect, useState } from "react";
-import Preloader from "./Preloader";
-import router from "next/router";
-
 const LandingPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    if (isLoading) {
-      timeoutId = setTimeout(() => {
-        setIsLoading(false);
-      }, 5000); // 5 second timeout
-    }
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, [isLoading]);
-
-  const handleClick = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    
-    try {
-      await router.push("/recommendations");
-    } catch (error) {
-      console.error("Navigation error:", error);
-      setIsLoading(false);
-    }
-  };
-
-  if (isLoading) {
-    return <Preloader />;
-  }
-
   return (
     <HeroHighlight className="">
       <motion.h1
@@ -66,7 +32,6 @@ const LandingPage = () => {
   className="flex items-center gap-2 bg-white hover:bg-gray-200 text-black text-sm px-4 py-1.5 rounded-xl transition-transform hover:scale-110 backface-visibility-hidden transform-gpu"
   href="/recommendations"
   as={Link}
-  onClick={handleClick}
 >
   <div className="bg-black rounded-full p-1">
     <AudioLines className="w-4 h-4 text-white" />
@@ -77,6 +42,5 @@ const LandingPage = () => {
     </HeroHighlight>
   );
 };
-
 
 export default LandingPage;
