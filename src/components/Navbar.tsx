@@ -45,7 +45,7 @@ const Navbar = () => {
           {/* GitHub Button section with fixed width */}
           <div className="hidden lg:flex items-center justify-end w-[250px]">
             <button
-              onClick={() => window.open('https://github.com/Garvit-Nag/Revibe', '_blank')}
+              onClick={() => window.open('https://github.com/Garvit-Nag/Revibe-Remastered', '_blank')}
               className="inline-flex items-center gap-2 text-white border border-white hover:bg-white hover:text-black px-4 py-2 rounded-xl transition-all duration-300"
             >
               <Github className="h-5 w-5" />
