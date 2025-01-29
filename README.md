@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Revibe - Music Recommendation System
 
-## Getting Started
+Revibe is an intelligent music recommendation system that uses machine learning to help users discover new music based on song similarities. The system analyzes audio features and uses clustering techniques to provide accurate music recommendations.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🎵 Song-based recommendations using K-means clustering
+- 🎧 30-second preview clips from iTunes
+- 📊 Analysis of 12 different audio features
+- 🎨 Modern, responsive UI with dark theme
+- ⚡ Real-time recommendations
+
+## Tech Stack
+
+### Frontend
+- Next.js 13+ with App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion for animations
+- Lucide React for icons
+- shadcn/ui components
+
+### Backend
+- FastAPI
+- scikit-learn for machine learning
+- pandas for data processing
+- iTunes API integration
+- Python 3.10+
+
+## Project Structure
+
+```
+revibe/
+├── src/
+│   ├── components/
+│   │   ├── LandingPage.tsx
+│   │   ├── Recommendations.tsx
+│   │   ├── About.tsx
+│   │   └── ...
+│   ├── app/
+│   └── ...
+│
+server/
+├── app/
+│   ├── api/
+│   │   └── itunes.py
+│   ├── models/
+│   └── main.py
+├── data/
+│   ├── processed_songs.csv
+│   └── song_cluster_pipeline.joblib
+└── requirements.txt
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup Instructions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create and activate a Python virtual environment:
+```bash
+cd server
+python -m venv venv
+source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+```
 
-## Learn More
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. Start the server:
+```bash
+uvicorn app.main:app --reload
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The API will be available at `http://localhost:8000`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Frontend Setup
 
-## Deploy on Vercel
+1. Install dependencies:
+```bash
+cd revibe
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Create a `.env.local` file:
+```
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:3000`
+
+## How It Works
+
+The recommendation system works in several steps:
+
+1. **Data Processing**: Songs are analyzed based on features like acousticness, danceability, energy, etc.
+2. **Clustering**: Using K-means clustering (k=20), songs are grouped based on similar characteristics
+3. **Recommendation**: When a user selects a song:
+   - The system identifies the song's cluster
+   - Finds similar songs within that cluster using Euclidean distance
+   - Retrieves preview information from iTunes
+   - Returns the most similar tracks
+
+## API Endpoints
+
+- `GET /search/`: Search for songs
+- `GET /recommendations/`: Get song recommendations
+- `GET /song_details/`: Get detailed song information
+
+## Machine Learning Model
+
+The system uses:
+- K-means clustering with 20 clusters
+- StandardScaler for feature normalization
+- Euclidean distance for similarity calculations
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
+

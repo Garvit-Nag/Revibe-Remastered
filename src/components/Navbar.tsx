@@ -31,7 +31,7 @@ const Navbar = () => {
                 href="/recommendations" 
                 className="text-white hover:text-white/90 transition-all duration-300 transform hover:scale-105 text-lg font-medium hover:brightness-110"
               >
-                Get Recommendation
+                Get Recommendations
               </Link>
               <Link 
                 href="/about" 
