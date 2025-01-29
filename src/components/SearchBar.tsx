@@ -26,7 +26,7 @@ export default function SearchBar({ onSongSelect }: SearchBarProps) {
         return
       }
       try {
-        const response = await fetch(`http://localhost:8000/search/?q=${encodeURIComponent(query)}`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/search/?q=${encodeURIComponent(query)}`)
         const data = await response.json()
         setSuggestions(data)
       } catch (error) {
@@ -52,7 +52,7 @@ export default function SearchBar({ onSongSelect }: SearchBarProps) {
   return (
     <div className="relative w-full max-w-2xl mx-auto" ref={suggestionRef}>
       <div className="relative">
-        <Search className="absolute left-4 top-3 text-text-secondary" size={20} />
+        <Search className="absolute left-4 top-3 text-[#727272]" size={20} />
         <input
           type="text"
           value={query}
@@ -61,24 +61,24 @@ export default function SearchBar({ onSongSelect }: SearchBarProps) {
             setShowSuggestions(true)
           }}
           placeholder="Search for songs..."
-          className="search-input pl-12"
+          className="w-full bg-[#17171A] hover:bg-[#1b1b1f] focus:bg-[#2a2a2a] text-white rounded-full py-3 pl-12 pr-4 outline-none ring-1 ring-[#ffffff1a] focus:ring-[#ffffff1a] transition-all duration-200 placeholder:text-[#727272]"
         />
       </div>
       
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute w-full mt-2 bg-surface rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+        <div className="absolute w-full mt-2 bg-[#282828]/80 backdrop-blur-md rounded-lg shadow-xl z-50 max-h-96 overflow-y-auto ring-1 ring-[#ffffff1a]">
           {suggestions.map((suggestion, index) => (
             <div
               key={`${suggestion.name}-${index}`}
-              className="p-4 hover:bg-hover-bg cursor-pointer"
+              className="p-4 hover:bg-[#ffffff1a] transition-colors duration-200 cursor-pointer border-b border-[#ffffff1a] last:border-none"
               onClick={() => {
                 onSongSelect(suggestion.name, suggestion.artists[0])
                 setShowSuggestions(false)
                 setQuery('')
               }}
             >
-              <div className="font-medium">{suggestion.name}</div>
-              <div className="text-text-secondary text-sm">
+              <div className="font-medium text-white">{suggestion.name}</div>
+              <div className="text-[#b3b3b3] text-sm mt-1">
                 {suggestion.artists.join(', ')} • {suggestion.year}
               </div>
             </div>

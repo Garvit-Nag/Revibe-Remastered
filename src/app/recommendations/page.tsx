@@ -5,7 +5,7 @@ import Recommendations from '@/components/Recommendations'
 
 export default function RecommendationsPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#040404]">
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-6">
         <Recommendations />

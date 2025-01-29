@@ -2,31 +2,18 @@ import React from 'react';
 
 const Preloader: React.FC = () => {
   return (
-    <div className="preloader-container">
-      <div className="loader">
-        <div className="loader__circle"></div>
-        <div className="loader__circle"></div>
-        <div className="loader__circle"></div>
-        <div className="loader__circle"></div>
-        <div className="loader__circle"></div>
+    <>
+      <div className="fixed top-0 left-0 w-screen h-screen bg-black/95 z-[9999] flex items-center justify-center" style={{ marginTop: 0 }}>
+        <div className="loader">
+          <div className="loader__circle"></div>
+          <div className="loader__circle"></div>
+          <div className="loader__circle"></div>
+          <div className="loader__circle"></div>
+          <div className="loader__circle"></div>
+        </div>
       </div>
 
       <style jsx>{`
-        .preloader-container {
-          position: fixed;
-          inset: 0;  /* This sets top, right, bottom, left all to 0 */
-          width: 100dvw;  /* dynamic viewport width */
-          height: 100dvh;  /* dynamic viewport height */
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: rgba(0, 0, 0, 0.95);
-          z-index: 99999;  /* Increased z-index to ensure it's above navbar */
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-        }
-
         .loader {
           position: relative;
           display: flex;
@@ -41,9 +28,9 @@ const Preloader: React.FC = () => {
           width: 100%;
           height: 2em;
           filter: blur(45px);
-          background-color: #e299ff;
-          background-image: radial-gradient(at 52% 57%, hsla(11,83%,72%,1) 0px, transparent 50%),
-          radial-gradient(at 37% 57%, hsla(175,78%,66%,1) 0px, transparent 50%);
+          background-color: #1DB954;
+          background-image: radial-gradient(at 52% 57%, #1A8C43 0px, transparent 50%), 
+                          radial-gradient(at 37% 57%, #A0FFC4 0px, transparent 50%); 
         }
 
         .loader__circle {
@@ -52,12 +39,12 @@ const Preloader: React.FC = () => {
           height: var(--size__loader);
           border-radius: 50%;
           animation: loader__circle__jumping 2s infinite;
-          background-color: #b499ff;
+          background-color: #1DB954;
         }
 
         .loader__circle:nth-child(2n) {
           animation-delay: 300ms;
-          background-color: #e499ff;
+          background-color: #2EDC71;
         }
 
         .loader__circle:nth-child(3n) {
@@ -79,7 +66,7 @@ const Preloader: React.FC = () => {
           }
         }
       `}</style>
-    </div>
+    </>
   );
 };
 
