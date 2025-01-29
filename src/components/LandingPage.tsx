@@ -4,7 +4,7 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { AudioLines } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Preloader from "./Preloader";
 import router from "next/router";
 
