@@ -14,6 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <title>Revibe - Discover your next favorite song</title>
+        <meta name="description" content="Discover your next favorite song" />
+      </head>
       <body className={`${inter.className} bg-background text-text-primary min-h-screen`}>
         <NextUIProvider>
           {children}
