@@ -4,7 +4,16 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { AudioLines } from "lucide-react";
+import { useState } from "react";
+import Preloader from "./Preloader";
+
 const LandingPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  if (isLoading) {
+    return <Preloader />;
+  }
+
   return (
     <HeroHighlight className="">
       <motion.h1
@@ -32,6 +41,7 @@ const LandingPage = () => {
   className="flex items-center gap-2 bg-white hover:bg-gray-200 text-black text-sm px-4 py-1.5 rounded-xl transition-transform hover:scale-110 backface-visibility-hidden transform-gpu"
   href="/recommendations"
   as={Link}
+  onClick={() => setIsLoading(true)}
 >
   <div className="bg-black rounded-full p-1">
     <AudioLines className="w-4 h-4 text-white" />
@@ -42,5 +52,6 @@ const LandingPage = () => {
     </HeroHighlight>
   );
 };
+
 
 export default LandingPage;
