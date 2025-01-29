@@ -1,6 +1,7 @@
 # Revibe - Music Recommendation System
 
 Revibe is an intelligent music recommendation system that uses machine learning to help users discover new music based on song similarities. The system analyzes audio features and uses clustering techniques to provide accurate music recommendations.
+You can view the live version of the website here: [Revibe](https://revibe-audio.vercel.app)
 
 ## Features
 
@@ -120,7 +121,4 @@ The system uses:
 - StandardScaler for feature normalization
 - Euclidean distance for similarity calculations
 
-## Contributing
-
-Feel free to submit issues and enhancement requests!
 
