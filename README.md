@@ -25,7 +25,7 @@ You can view the live version of the website here: [Revibe](https://revibe-audio
 - FastAPI
 - scikit-learn for machine learning
 - pandas for data processing
-- iTunes API integration
+- iTunes previews
 - Python 3.10+
 
 ## Project Structure
